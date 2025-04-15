@@ -1,0 +1,116 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 260 90% 65%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 210 90% 48%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 260 90% 65%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-portfolio-royal-purple to-portfolio-indigo bg-clip-text text-transparent;
+  }
+  
+  .dark-gradient-bg {
+    @apply bg-gradient-to-br from-portfolio-dark-blue to-portfolio-midnight-blue;
+  }
+
+  .purple-gradient-bg {
+    @apply bg-gradient-to-r from-portfolio-purple to-portfolio-indigo;
+  }
+  
+  .card-shadow {
+    @apply shadow-lg hover:shadow-xl transition-shadow;
+  }
+  
+  .nav-link {
+    @apply relative inline-block px-2 py-1 text-foreground hover:text-primary transition-colors after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+  
+  .nav-link.active {
+    @apply after:scale-x-100;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6 gradient-text;
+  }
+  
+  /* New gradient patterns for skills section */
+  .skills-pattern {
+    @apply relative overflow-hidden;
+  }
+  
+  .skills-pattern::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-portfolio-purple/20 to-portfolio-indigo/10 opacity-30;
+    mask-image: repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+                repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
+    mask-size: 20px 20px;
+    mask-position: 0 0, 10px 10px;
+  }
+  
+  .skill-card {
+    @apply relative overflow-hidden backdrop-blur-sm border border-white/10 rounded-xl transition-all;
+  }
+  
+  .skill-card::before {
+    content: '';
+    @apply absolute -inset-1 bg-gradient-to-r from-portfolio-royal-purple/40 to-portfolio-indigo/30 rounded-xl blur opacity-0 transition-opacity duration-300 -z-10;
+  }
+  
+  .skill-card:hover::before {
+    @apply opacity-100;
+  }
+}
